@@ -7,12 +7,33 @@
 //
 
 import UIKit
+import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: LoadingViewController {
 
+    @IBOutlet weak var usernameTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var registerButton: UIButton!
+    
+    @IBOutlet weak var logoutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // hide login and logout buttons
+        hideButtons()
+        
+        // Check if user is logged in
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil {
+            // Logged in
+            print("Login false")
+            logedIn(true)
+        } else {
+            logedIn(false)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +42,105 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginTapped(sender: AnyObject) {
+        let userName = usernameTextfield.text;
+        let userPassword = passwordTextfield.text;
+        
+        // Show progress spinner
+        
+        startActivityIndicator()
+        
+        // Check for empty fields
+        if(userName!.isEmpty || userPassword!.isEmpty)
+        {
+            
+            // Display alert message
+            
+            displayAlertMessage("All fields are required");
+            
+            return;
+        }
+        
+        self.auth(userName!, pw: userPassword!)
 
+    
+    }
+    
+    @IBAction func logoutTapped(sender: AnyObject) {
+        CURRENT_USER.unauth()
+        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
+        logedIn(false)
+    }
+    
+    func displayAlertMessage(userMessage:String)
+    {
+        stopActivityIndicator()
+        
+        let alertCtl = UIAlertController(title:"Alert", message:userMessage, preferredStyle: UIAlertControllerStyle.Alert);
+        
+        let successAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default, handler:nil);
+        
+        alertCtl.addAction(successAction);
+        
+        self.presentViewController(alertCtl, animated:true, completion: nil);
+        
+    }
+    
+    func auth(name: String, pw: String) {
+        FIREBASE_REF.authUser(name, password: pw, withCompletionBlock: {(error, authData) -> Void in
+            if error == nil {
+                NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+                print("Login successfully")
+                self.logedIn(true)
+                self.stopActivityIndicator()
+                // Something went wrong. :(
+            } else {
+                self.displayAlertMessage("Login failed");
+
+                if let errorCode = FAuthenticationError(rawValue: error.code) {
+                    switch (errorCode) {
+                    case .UserDoesNotExist:
+                        print("Handle invalid user")
+                    case .InvalidEmail:
+                        print("Handle invalid email")
+                    case .InvalidPassword:
+                        print("Handle invalid password")
+                    default:
+                        print("Handle default situation")
+                    }
+                }
+            }
+        })
+    }
+
+    func logedIn(flag: Bool) {
+        if flag {
+            print("Hide login")
+        } else {
+            print("Hide Logout")
+        }
+        loginButton.hidden = flag
+        logoutButton.hidden = !flag
+    }
+    
+    func hideButtons() {
+        loginButton.hidden = true
+        logoutButton.hidden = true
+    }
+    
+    override func startActivityIndicator() {
+        super.startActivityIndicator()
+        usernameTextfield.enabled = false
+        passwordTextfield.enabled = false
+    }
+    
+    override func stopActivityIndicator() {
+        super.stopActivityIndicator()
+        usernameTextfield.enabled = true
+        passwordTextfield.enabled = true
+        usernameTextfield.text = ""
+        passwordTextfield.text = ""
+    }
     /*
     // MARK: - Navigation
 

@@ -15,6 +15,7 @@ class Movie {
     var title: String
     var year: String
     var image: UIImage?
+    var imageName: String
     var plot: String
     var lang: String
     var rating: Double
@@ -27,12 +28,6 @@ class Movie {
         self.plot = plot
         self.lang = lang
         self.rating = rating
-        if let img = UIImage(named: imageName) {
-            image = img
-        } //else {
-            ///image = UIImage(named: "placeholder")!
-        //}
-        
-        
+        self.imageName = imageName
     }
 }

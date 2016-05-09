@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: LoadingViewController {
 
+    @IBOutlet weak var usernameTextview: UITextField!
+    @IBOutlet weak var passwordTextview: UITextField!
+    @IBOutlet weak var comfirmPassTextview: UITextField!
+    
+    let ref = Firebase(url: "https://glowing-heat-6163.firebaseio.com")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +29,81 @@ class SignUpViewController: UIViewController {
     }
     
 
+    @IBAction func signUpTapped(sender: AnyObject) {
+        let userName = usernameTextview.text;
+        let userPassword = passwordTextview.text;
+        let userRepeatPassword = comfirmPassTextview.text;
+        
+        // Show progress spinner
+        
+        startActivityIndicator()
+        
+        // Check for empty fields
+        if(userName!.isEmpty || userPassword!.isEmpty || userRepeatPassword!.isEmpty)
+        {
+            
+            // Display alert message
+            
+            displayAlertMessage("All fields are required");
+            
+            return;
+        }
+        
+        //Check if passwords match
+        if(userPassword != userRepeatPassword)
+        {
+            // Display an alert message
+            displayAlertMessage("Passwords do not match");
+            return;
+            
+        }
+        
+        auth(userName!, pw: userPassword!)
+        
+        
+        // Store data
+      
+
+        
+    }
+    
+    func displayAlertMessage(userMessage:String)
+    {
+        stopActivityIndicator()
+        
+        let alertCtl = UIAlertController(title:"Alert", message:userMessage, preferredStyle: UIAlertControllerStyle.Alert);
+        
+        let successAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default, handler:nil);
+        
+        alertCtl.addAction(successAction);
+        
+        self.presentViewController(alertCtl, animated:true, completion: nil);
+        
+    }
+    
+    func auth(name: String, pw: String) {
+        FIREBASE_REF.createUser(name, password: pw, withValueCompletionBlock: {(error, authData) -> Void in
+            if error != nil {
+                print("Create fail")
+                self.stopActivityIndicator()
+                self.displayAlertMessage("Create Account failed")
+                // Something went wrong. :(
+            } else {
+                // Account created
+                FIREBASE_REF.authUser(name, password: pw, withCompletionBlock: { (error, authData) in
+                    if error != nil {
+                        self.stopActivityIndicator()
+                        self.displayAlertMessage("Create Account failed")
+                        // Login failed
+                    } else {
+                        NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+                        print("User: \(authData.uid) is created");
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                })
+            }
+        })
+    }
     /*
     // MARK: - Navigation
 

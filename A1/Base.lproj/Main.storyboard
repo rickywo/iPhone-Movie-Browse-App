@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5uN-25-PPn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5uN-25-PPn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -146,16 +146,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-Oo-qPE">
                                 <rect key="frame" x="0.0" y="536" width="600" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQZ-xu-kpW">
-                                        <rect key="frame" x="304" y="13.5" width="140" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQZ-xu-kpW">
+                                        <rect key="frame" x="304" y="13" width="140" height="36"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                         <state key="normal" image="ic_account_box_white_36pt">
                                             <attributedString key="attributedTitle"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTs-OY-pgO">
-                                        <rect key="frame" x="452" y="13.5" width="140" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTs-OY-pgO">
+                                        <rect key="frame" x="452" y="13" width="140" height="36"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                         <state key="normal" image="ic_settings_white_36pt">
@@ -165,8 +165,8 @@
                                             <segue destination="rTK-Ba-7Tn" kind="show" id="kuc-lP-fuK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnE-5x-601">
-                                        <rect key="frame" x="8" y="13.5" width="140" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnE-5x-601">
+                                        <rect key="frame" x="8" y="13" width="140" height="36"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                         <state key="normal" image="ic_room_white_36pt">
@@ -212,10 +212,10 @@
                                         <rect key="frame" x="238" y="173" width="123" height="30"/>
                                         <state key="normal" title="Forgot password?"/>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thd-XE-iOO">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thd-XE-iOO">
                                         <rect key="frame" x="20" y="58" width="559" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         </variation>
@@ -240,8 +240,11 @@
                                                 <include reference="T6P-yt-VWH"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="ax0-sQ-ZRM" eventType="touchUpInside" id="WRr-0a-hMG"/>
+                                        </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="668-xz-6mi">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="668-xz-6mi">
                                         <rect key="frame" x="20" y="20" width="559" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -273,17 +276,29 @@
                                             <segue destination="54X-F8-KDo" kind="show" id="Jph-f6-xlA"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ike-GB-gGI">
+                                        <rect key="frame" x="276.5" y="256" width="48" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="397-JB-92N"/>
+                                        </constraints>
+                                        <state key="normal" title="Logout"/>
+                                        <connections>
+                                            <action selector="logoutTapped:" destination="ax0-sQ-ZRM" eventType="touchUpInside" id="kj5-Vb-0TP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Thd-XE-iOO" firstAttribute="top" secondItem="668-xz-6mi" secondAttribute="bottom" constant="8" id="38K-xU-JTc"/>
                                     <constraint firstAttribute="trailing" secondItem="vTf-mF-QCc" secondAttribute="trailing" constant="36" id="DLh-4z-mSU"/>
                                     <constraint firstItem="668-xz-6mi" firstAttribute="leading" secondItem="Kb8-Q9-0jf" secondAttribute="leading" constant="20" id="KTJ-cC-oHk"/>
+                                    <constraint firstItem="ike-GB-gGI" firstAttribute="top" secondItem="vTf-mF-QCc" secondAttribute="bottom" constant="8" id="O7U-fE-4S9"/>
                                     <constraint firstAttribute="height" constant="310" id="O9O-Qj-j7B"/>
                                     <constraint firstItem="RIC-14-6jF" firstAttribute="centerX" secondItem="Kb8-Q9-0jf" secondAttribute="centerX" id="OEw-GZ-ZIj"/>
                                     <constraint firstItem="RIC-14-6jF" firstAttribute="top" secondItem="OFp-mj-ueW" secondAttribute="bottom" constant="8" id="Voj-JP-z3f"/>
                                     <constraint firstItem="vTf-mF-QCc" firstAttribute="leading" secondItem="Kb8-Q9-0jf" secondAttribute="leading" constant="36" id="aOd-cz-qB8"/>
                                     <constraint firstAttribute="trailing" secondItem="668-xz-6mi" secondAttribute="trailing" constant="21" id="bQY-XW-JyI"/>
+                                    <constraint firstItem="ike-GB-gGI" firstAttribute="centerX" secondItem="Kb8-Q9-0jf" secondAttribute="centerX" id="eLR-od-zY4"/>
                                     <constraint firstAttribute="trailing" secondItem="Thd-XE-iOO" secondAttribute="trailing" constant="21" id="fNd-Pd-Zbg"/>
                                     <constraint firstItem="668-xz-6mi" firstAttribute="top" secondItem="Kb8-Q9-0jf" secondAttribute="top" constant="20" id="kKo-SU-Dvg"/>
                                     <constraint firstItem="Thd-XE-iOO" firstAttribute="leading" secondItem="Kb8-Q9-0jf" secondAttribute="leading" constant="20" id="mS9-l0-cZz"/>
@@ -304,6 +319,13 @@
                             <constraint firstItem="Kb8-Q9-0jf" firstAttribute="width" secondItem="Xx4-JO-nFW" secondAttribute="width" id="jgU-Dq-beq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="OFp-mj-ueW" id="UJZ-jw-8U7"/>
+                        <outlet property="logoutButton" destination="ike-GB-gGI" id="FXG-v1-yco"/>
+                        <outlet property="passwordTextfield" destination="Thd-XE-iOO" id="NUe-5V-faC"/>
+                        <outlet property="registerButton" destination="vTf-mF-QCc" id="Xrp-Wy-TTl"/>
+                        <outlet property="usernameTextfield" destination="668-xz-6mi" id="62v-Zc-RTN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ORs-d1-EqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -821,10 +843,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-eO-NsD">
                                 <rect key="frame" x="0.0" y="145" width="600" height="310"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWE-NW-BOX">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWE-NW-BOX">
                                         <rect key="frame" x="20" y="58" width="559" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         </variation>
@@ -849,16 +871,19 @@
                                                 <include reference="lRU-q5-9hW"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="signUpTapped:" destination="54X-F8-KDo" eventType="touchUpInside" id="Agz-9X-vdZ"/>
+                                        </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ta2-ke-ZKA">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ta2-ke-ZKA">
                                         <rect key="frame" x="20" y="20" width="559" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="E-mail" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5bw-rS-FaW">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5bw-rS-FaW">
                                         <rect key="frame" x="20" y="96" width="559" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         </variation>
@@ -944,6 +969,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="comfirmPassTextview" destination="5bw-rS-FaW" id="yit-xs-sSe"/>
+                        <outlet property="passwordTextview" destination="CWE-NW-BOX" id="Idn-c5-Q0M"/>
+                        <outlet property="usernameTextview" destination="Ta2-ke-ZKA" id="lFY-Gk-jet"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ks9-6J-gTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1715,9 +1745,9 @@
         <image name="ic_settings_white_36pt" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3QN-Ir-BVC"/>
-        <segue reference="Wyl-I2-S5m"/>
-        <segue reference="5Nn-4p-rGK"/>
-        <segue reference="FSx-TG-arY"/>
+        <segue reference="k1r-r9-ceg"/>
+        <segue reference="Izf-cO-clA"/>
+        <segue reference="kuc-lP-fuK"/>
+        <segue reference="HeC-wG-WOP"/>
     </inferredMetricsTieBreakers>
 </document>
