@@ -34,8 +34,8 @@ class DataContainerSingleton
     
     //------------------------------------------------------------
     //Add properties here that you want to share accross your app
-    var movies: [Movie]?
-    var cinemas: [Cinema]?
+    var movies = [Movie]()
+    var cinemas = [Cinema]()
     //------------------------------------------------------------
     
     var goToBackgroundObserver: AnyObject?
@@ -48,15 +48,13 @@ class DataContainerSingleton
         //edit this code to load your custom properties
         if let movies = defaults.objectForKey(DefaultsKeys.movie) as! [Movie]? {
             print("Load from NSUserDefault success")
-        } else {
-            movies = [Movie]()
         }
-        cinemas = defaults.objectForKey(DefaultsKeys.cinema) as! [Cinema]?
+        // cinemas = (defaults.objectForKey(DefaultsKeys.cinema) as! [Cinema]?)!
         //-----------------------------------------------------------------------------
         
         //Add an obsever for the UIApplicationDidEnterBackgroundNotification.
         //When the app goes to the background, the code block saves our properties to NSUserDefaults.
-        goToBackgroundObserver = NSNotificationCenter.defaultCenter().addObserverForName(
+        /*goToBackgroundObserver = NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidEnterBackgroundNotification,
             object: nil,
             queue: nil)
@@ -71,7 +69,7 @@ class DataContainerSingleton
             //-----------------------------------------------------------------------------
             
             //Tell NSUserDefaults to save to disk now.
-            defaults.synchronize()
-        }
+            // defaults.synchronize()
+        }*/
     }
 }

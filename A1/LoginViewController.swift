@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginViewController: LoadingViewController {
 
@@ -27,14 +26,7 @@ class LoginViewController: LoadingViewController {
         hideButtons()
         
         // Check if user is logged in
-        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil {
-            // Logged in
-            print("Login false")
-            logedIn(true)
-        } else {
-            logedIn(false)
-        }
-        // Do any additional setup after loading the view.
+            // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,9 +59,7 @@ class LoginViewController: LoadingViewController {
     }
     
     @IBAction func logoutTapped(sender: AnyObject) {
-        CURRENT_USER.unauth()
-        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
-        logedIn(false)
+                logedIn(false)
     }
     
     func displayAlertMessage(userMessage:String)
@@ -87,30 +77,7 @@ class LoginViewController: LoadingViewController {
     }
     
     func auth(name: String, pw: String) {
-        FIREBASE_REF.authUser(name, password: pw, withCompletionBlock: {(error, authData) -> Void in
-            if error == nil {
-                NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
-                print("Login successfully")
-                self.logedIn(true)
-                self.stopActivityIndicator()
-                // Something went wrong. :(
-            } else {
-                self.displayAlertMessage("Login failed");
-
-                if let errorCode = FAuthenticationError(rawValue: error.code) {
-                    switch (errorCode) {
-                    case .UserDoesNotExist:
-                        print("Handle invalid user")
-                    case .InvalidEmail:
-                        print("Handle invalid email")
-                    case .InvalidPassword:
-                        print("Handle invalid password")
-                    default:
-                        print("Handle default situation")
-                    }
-                }
-            }
-        })
+        
     }
 
     func logedIn(flag: Bool) {

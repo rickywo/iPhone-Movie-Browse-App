@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpViewController: LoadingViewController {
 
@@ -15,7 +14,6 @@ class SignUpViewController: LoadingViewController {
     @IBOutlet weak var passwordTextview: UITextField!
     @IBOutlet weak var comfirmPassTextview: UITextField!
     
-    let ref = Firebase(url: "https://glowing-heat-6163.firebaseio.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,27 +80,6 @@ class SignUpViewController: LoadingViewController {
     }
     
     func auth(name: String, pw: String) {
-        FIREBASE_REF.createUser(name, password: pw, withValueCompletionBlock: {(error, authData) -> Void in
-            if error != nil {
-                print("Create fail")
-                self.stopActivityIndicator()
-                self.displayAlertMessage("Create Account failed")
-                // Something went wrong. :(
-            } else {
-                // Account created
-                FIREBASE_REF.authUser(name, password: pw, withCompletionBlock: { (error, authData) in
-                    if error != nil {
-                        self.stopActivityIndicator()
-                        self.displayAlertMessage("Create Account failed")
-                        // Login failed
-                    } else {
-                        NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
-                        print("User: \(authData.uid) is created");
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }
-                })
-            }
-        })
     }
     /*
     // MARK: - Navigation

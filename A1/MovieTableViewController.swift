@@ -19,7 +19,7 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.bringSubviewToFront(loadingView)
-        if(data.movies!.count == 0) {
+        if(data.movies.count == 0 ) {
             self.getNowPlaying()}
         else {
             tableView.reloadData()
@@ -50,13 +50,13 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return data.movies!.count
+        return data.movies.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as UITableViewCell
-        let movie = data.movies![indexPath.row]
+        let movie = data.movies[indexPath.row]
         cell.textLabel?.text = movie.title
         cell.detailTextLabel?.text = movie.year
         
@@ -111,10 +111,10 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
         
         if let destination = segue.destinationViewController as? MovieUIViewController {
             if let index = tableView.indexPathForSelectedRow?.row {
-                destination.movie = data.movies![index]
-                print(data.movies![index].title)
-                print(data.movies![index].lang)
-                print(data.movies![index].plot)
+                destination.movie = data.movies[index]
+                print(data.movies[index].title)
+                print(data.movies[index].lang)
+                print(data.movies[index].plot)
             }
         }
     }
@@ -148,7 +148,7 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
                                 rating:6.0)
                             //print(movieObj.title)
                             self.downloadedImageFrom(link: movieObj.imageName, movie: movieObj)
-                            self.data.movies?.append(movieObj)
+                            self.data.movies.append(movieObj)
                             
                             
                         })
