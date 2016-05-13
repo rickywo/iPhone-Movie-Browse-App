@@ -9,21 +9,25 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var data: DataContainerSingleton = DataContainerSingleton.sharedDataContainer
+    let data: DataContainerSingleton = DataContainerSingleton.sharedDataContainer
+    let moc = DataController().managedObjectContext
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.bringSubviewToFront(loadingView)
-        if(data.movies!.count == 0) {
+        if(data.movies.count == 0 ) {
             self.getNowPlaying()}
         else {
             tableView.reloadData()
         }
+        
+        //fetchImage()
         
         //moveTableView.delegate = self
         //moveTableView.dataSource = self
@@ -50,13 +54,13 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return data.movies!.count
+        return data.movies.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as UITableViewCell
-        let movie = data.movies![indexPath.row]
+        let movie = data.movies[indexPath.row]
         cell.textLabel?.text = movie.title
         cell.detailTextLabel?.text = movie.year
         
@@ -111,10 +115,10 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
         
         if let destination = segue.destinationViewController as? MovieUIViewController {
             if let index = tableView.indexPathForSelectedRow?.row {
-                destination.movie = data.movies![index]
-                print(data.movies![index].title)
-                print(data.movies![index].lang)
-                print(data.movies![index].plot)
+                destination.movie = data.movies[index]
+                print(data.movies[index].title)
+                print(data.movies[index].lang)
+                print(data.movies[index].plot)
             }
         }
     }
@@ -147,8 +151,13 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
                                 lang:movie["original_language"].rawString()!,
                                 rating:6.0)
                             //print(movieObj.title)
-                            self.downloadedImageFrom(link: movieObj.imageName, movie: movieObj)
-                            self.data.movies?.append(movieObj)
+                            ImageCache.sharedInstance.findOrLoadAsync(movieObj.imageName!, completionHandler: { (image) -> Void in
+                                print(movieObj.imageName!)
+                                print("FindOrLoadAsync")
+                                movieObj.image = image
+                            })
+                            //self.downloadedImageFrom(link: movieObj.imageName!, movie: movieObj)
+                            self.data.movies.append(movieObj)
                             
                             
                         })
@@ -176,10 +185,36 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
                 else { return }
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 movie.image = uiImage
+                self.seedImage(movie.imageName!)
                 print("Load Image from URL")
                 self.tableView.reloadData()
             }
         }).resume()
+    }
+    
+    
+    func fetchImage() {
+        let imageFetch = NSFetchRequest(entityName: "Image")
+        do{
+            let fetchedImage = try moc.executeFetchRequest(imageFetch) as! [Image]
+            print(fetchedImage.first!.name!)
+        } catch {
+            fatalError("Failure to fetch image")
+        }
+    }
+    
+    func seedImage (name: String) {
+        
+        
+        let image = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: moc) as! Image
+        image.setValue(name, forKey: "name")
+        //image.setValue(<#T##value: AnyObject?##AnyObject?#>, forKey: <#T##String#>)
+        
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Failure to save context")
+        }
     }
 }
 

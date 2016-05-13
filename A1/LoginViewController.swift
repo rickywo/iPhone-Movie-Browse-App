@@ -9,32 +9,53 @@
 import UIKit
 import Firebase
 
-class LoginViewController: LoadingViewController {
+class LoginViewController: LoadingViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var usernameTextfield: UITextField!
+    
     @IBOutlet weak var passwordTextfield: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var registerButton: UIButton!
     
-    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var detailView: UIView!
+    
+    @IBOutlet weak var loginView: UIView!
+    
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    @IBOutlet weak var userIcon: UIImageView!
+    
+    let user = CURRENT_USER
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(LoginViewController.imageTapped(_:)))
+        userIcon.userInteractionEnabled = true
+        userIcon.addGestureRecognizer(tapGestureRecognizer)
+        
         // hide login and logout buttons
-        hideButtons()
+        hideViews()
         
         // Check if user is logged in
-        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil {
+        if isLoggedIn() {
             // Logged in
-            print("Login false")
-            logedIn(true)
+            showDetailView()
         } else {
-            logedIn(false)
+            showLoginView()
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func isLoggedIn() -> Bool {
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && user.authData != nil {
+            // Logged in
+            return true
+        } else {
+            return false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,14 +83,13 @@ class LoginViewController: LoadingViewController {
         }
         
         self.auth(userName!, pw: userPassword!)
-
     
     }
     
     @IBAction func logoutTapped(sender: AnyObject) {
-        CURRENT_USER.unauth()
+        user.unauth()
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
-        logedIn(false)
+        showLoginView()
     }
     
     func displayAlertMessage(userMessage:String)
@@ -91,7 +111,7 @@ class LoginViewController: LoadingViewController {
             if error == nil {
                 NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                 print("Login successfully")
-                self.logedIn(true)
+                self.showDetailView()
                 self.stopActivityIndicator()
                 // Something went wrong. :(
             } else {
@@ -119,14 +139,70 @@ class LoginViewController: LoadingViewController {
         } else {
             print("Hide Logout")
         }
-        loginButton.hidden = flag
-        logoutButton.hidden = !flag
+        loginView.hidden = flag
+        detailView.hidden = !flag
     }
     
-    func hideButtons() {
-        loginButton.hidden = true
-        logoutButton.hidden = true
+    func showLoginView() {
+        
+        detailView.hidden = true
+        
+        loginView.hidden = false
     }
+    
+    func showDetailView() {
+        print("LoadUserDetail")
+        loadUserDetail()
+        
+        loginView.hidden = true
+        
+        detailView.hidden = false
+        
+
+    }
+    
+    func hideViews() {
+        
+        loginView.hidden = true
+        
+        detailView.hidden = true
+        
+    }
+    
+    
+    func imageTapped(img: AnyObject)
+    {
+        // Your action
+        print("Picture tapped")
+        var imageFromSource = UIImagePickerController()
+        imageFromSource.delegate = self
+        imageFromSource.allowsEditing = false
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            
+            imageFromSource.sourceType = UIImagePickerControllerSourceType.Camera
+            
+        } else {
+            
+            imageFromSource.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            
+        }
+        
+        self.presentViewController(imageFromSource, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        var temp: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        userIcon.image = temp
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    func loadUserDetail() {
+        print(user.authData.uid)
+        emailLabel.text = user.authData.uid
+        
+    }
+
     
     override func startActivityIndicator() {
         super.startActivityIndicator()

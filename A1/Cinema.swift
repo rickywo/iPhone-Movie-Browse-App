@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Cinema {
+class Cinema:NSObject {
     var name: String
     var website: String
     var address: String

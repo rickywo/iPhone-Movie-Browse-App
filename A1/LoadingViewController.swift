@@ -52,18 +52,14 @@ class LoadingViewController: UIViewController {
     }
     
     func initializeSpinner() {
-        loadingView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        loadingView.backgroundColor = UIColor.lightGrayColor()
+        loadingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        loadingView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.8)
         loadingView.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        wait.color = UIColor.whiteColor()
+        wait.color = UIColor.lightGrayColor().colorWithAlphaComponent(0.8)
         wait.startAnimating()
         wait.hidesWhenStopped = false
-        let text = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        text.textColor = UIColor.whiteColor()
-        text.text = "processing..."
         loadingView.addSubview(wait)
-        loadingView.addSubview(text)
         loadingView.center = self.view.center
         loadingView.tag = 100
     }

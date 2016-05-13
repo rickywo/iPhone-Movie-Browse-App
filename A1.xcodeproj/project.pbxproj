@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		AE2EB75DF6E1E983E6BC30C7 /* Pods_A1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3085B4C46923B4C1BB0C2C7 /* Pods_A1.framework */; };
+		FA00736A1CE2CD940049A465 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073691CE2CD940049A465 /* DataController.swift */; };
+		FA00736C1CE2D3550049A465 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736B1CE2D3550049A465 /* ImageCache.swift */; };
+		FA00736E1CE31DE30049A465 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736D1CE31DE30049A465 /* LRUCache.swift */; };
+		FA0073791CE3305A0049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073771CE3305A0049A465 /* Image+CoreDataProperties.swift */; };
+		FA00737A1CE3305A0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073781CE3305A0049A465 /* Image.swift */; };
 		FA270C891CB627F0006BC5F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C881CB627F0006BC5F9 /* LoginViewController.swift */; };
 		FA270C8B1CB6595D006BC5F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */; };
 		FA270C8D1CB659DB006BC5F9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */; };
@@ -56,6 +61,11 @@
 		67218D90BC30A742421838D0 /* Pods-A1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A1.release.xcconfig"; path = "Pods/Target Support Files/Pods-A1/Pods-A1.release.xcconfig"; sourceTree = "<group>"; };
 		E03CB72593CFCB4DCEC1A59E /* Pods-A1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A1/Pods-A1.debug.xcconfig"; sourceTree = "<group>"; };
 		E3085B4C46923B4C1BB0C2C7 /* Pods_A1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0073691CE2CD940049A465 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		FA00736B1CE2D3550049A465 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		FA00736D1CE31DE30049A465 /* LRUCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
+		FA0073771CE3305A0049A465 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA0073781CE3305A0049A465 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA270C881CB627F0006BC5F9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +165,7 @@
 				FADAAABC1CB7E70100A9719E /* MovieCinemaSessionViewController.swift */,
 				FA270C881CB627F0006BC5F9 /* LoginViewController.swift */,
 				FAA970431CE05B3000CD2AE9 /* LoadingViewController.swift */,
+				FA0073691CE2CD940049A465 /* DataController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +195,8 @@
 		FAAFB43C1CB1015700AE63BD /* A1 */ = {
 			isa = PBXGroup;
 			children = (
+				FA0073771CE3305A0049A465 /* Image+CoreDataProperties.swift */,
+				FA0073781CE3305A0049A465 /* Image.swift */,
 				FAF3BC831CE03A8B002B2568 /* CoreDataModel.xcdatamodeld */,
 				FA7D2C8B1CDDDE1A008A5EA4 /* Controllers */,
 				FAAFB43F1CB1015700AE63BD /* AppDelegate.swift */,
@@ -231,6 +244,8 @@
 				FA7D2C8E1CDDE236008A5EA4 /* TMDBApi.swift */,
 				FAA9703F1CE048D100CD2AE9 /* DataContainer.swift */,
 				FA8AEDC91CE098B500D6E350 /* BaseService.swift */,
+				FA00736B1CE2D3550049A465 /* ImageCache.swift */,
+				FA00736D1CE31DE30049A465 /* LRUCache.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -428,18 +443,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA00736E1CE31DE30049A465 /* LRUCache.swift in Sources */,
+				FA00737A1CE3305A0049A465 /* Image.swift in Sources */,
 				FA270C891CB627F0006BC5F9 /* LoginViewController.swift in Sources */,
 				FA270C8D1CB659DB006BC5F9 /* SettingViewController.swift in Sources */,
 				FADAAABB1CB7E1C700A9719E /* MovieCinemaViewController.swift in Sources */,
 				FAAFB4711CB2759300AE63BD /* Cinema.swift in Sources */,
 				FADAAABD1CB7E70100A9719E /* MovieCinemaSessionViewController.swift in Sources */,
+				FA00736A1CE2CD940049A465 /* DataController.swift in Sources */,
 				FAAFB4691CB1139900AE63BD /* MovieModel.swift in Sources */,
 				FAF3BC851CE03A8B002B2568 /* CoreDataModel.xcdatamodeld in Sources */,
+				FA0073791CE3305A0049A465 /* Image+CoreDataProperties.swift in Sources */,
 				FAAFB46F1CB2236400AE63BD /* MovieUIViewController.swift in Sources */,
 				FAA970401CE048D100CD2AE9 /* DataContainer.swift in Sources */,
 				FA270C8B1CB6595D006BC5F9 /* SignUpViewController.swift in Sources */,
 				FAA970441CE05B3000CD2AE9 /* LoadingViewController.swift in Sources */,
 				FA7D2C8F1CDDE236008A5EA4 /* TMDBApi.swift in Sources */,
+				FA00736C1CE2D3550049A465 /* ImageCache.swift in Sources */,
 				FA8AEDCA1CE098B500D6E350 /* BaseService.swift in Sources */,
 				FAAFB4401CB1015700AE63BD /* AppDelegate.swift in Sources */,
 				FAAFB4671CB1138400AE63BD /* Movie.swift in Sources */,
@@ -610,6 +630,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/A1",
+				);
 				INFOPLIST_FILE = A1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.rmit.s3518495.$(PRODUCT_NAME:rfc1034identifier)";
@@ -625,6 +649,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/A1",
+				);
 				INFOPLIST_FILE = A1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.rmit.s3518495.$(PRODUCT_NAME:rfc1034identifier)";

@@ -14,8 +14,14 @@ var FIREBASE_REF = Firebase(url: BASE_URL)
 
 var CURRENT_USER:Firebase {
     
-    let userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
-    let currentUser = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(userID)
+    var uid: String
+    if let userID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String? {
+        uid = userID
+    }
+    else {
+        uid = "12345"
+    }
+    let currentUser = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(uid)
     
     return currentUser!
 }

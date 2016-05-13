@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 
 /**
@@ -18,7 +19,10 @@ struct DefaultsKeys
 {
     static let movie  = "Movie"
     static let cinema  = "Cinema"
+    static let uid = "uid"
 }
+
+let USER_PATH = "users"
 
 /**
  :Class:   DataContainerSingleton
@@ -30,12 +34,13 @@ struct DefaultsKeys
 
 class DataContainerSingleton
 {
+    
     static let sharedDataContainer = DataContainerSingleton()
     
     //------------------------------------------------------------
     //Add properties here that you want to share accross your app
-    var movies: [Movie]?
-    var cinemas: [Cinema]?
+    var movies = [Movie]()
+    var cinemas = [Cinema]()
     //------------------------------------------------------------
     
     var goToBackgroundObserver: AnyObject?
@@ -46,32 +51,56 @@ class DataContainerSingleton
         //-----------------------------------------------------------------------------
         //This code reads the singleton's properties from NSUserDefaults.
         //edit this code to load your custom properties
-        if let movies = defaults.objectForKey(DefaultsKeys.movie) as! [Movie]? {
+        /*if let movies = defaults.objectForKey(DefaultsKeys.movie) as! [Movie]? {
             print("Load from NSUserDefault success")
-        } else {
-            movies = [Movie]()
+        }*/
+        
+        let moviesData = defaults.objectForKey(DefaultsKeys.movie) as? NSData
+        
+        if let moviesData = moviesData {
+            let movies = NSKeyedUnarchiver.unarchiveObjectWithData(moviesData) as? [Movie]
+            print("Load from NSUserDefault success")
         }
-        cinemas = defaults.objectForKey(DefaultsKeys.cinema) as! [Cinema]?
+        
+        // cinemas = (defaults.objectForKey(DefaultsKeys.cinema) as! [Cinema]?)!
         //-----------------------------------------------------------------------------
         
         //Add an obsever for the UIApplicationDidEnterBackgroundNotification.
         //When the app goes to the background, the code block saves our properties to NSUserDefaults.
+        
         goToBackgroundObserver = NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidEnterBackgroundNotification,
             object: nil,
-            queue: nil)
+            queue: nil, usingBlock: {
+            (notification: NSNotification!) in
+            print("程序进入到后台了")
+                let defaults = NSUserDefaults.standardUserDefaults()
+                //-----------------------------------------------------------------------------
+                //This code saves the singleton's properties to NSUserDefaults.
+                //edit this code to save your custom properties
+                let movieData = NSKeyedArchiver.archivedDataWithRootObject(self.movies)
+                //let cinemaData = NSKeyedArchiver.archivedDataWithRootObject(self.cinemas)
+                defaults.setObject( movieData, forKey: DefaultsKeys.movie)
+                //defaults.setObject( cinemaData, forKey: DefaultsKeys.cinema)
+                //-----------------------------------------------------------------------------
+                
+                //Tell NSUserDefaults to save to disk now.
+                defaults.synchronize()
+            }) /*
         {
             (note: NSNotification!) -> Void in
             let defaults = NSUserDefaults.standardUserDefaults()
             //-----------------------------------------------------------------------------
             //This code saves the singleton's properties to NSUserDefaults.
             //edit this code to save your custom properties
-            defaults.setObject( self.movies, forKey: DefaultsKeys.movie)
-            defaults.setObject( self.cinemas, forKey: DefaultsKeys.cinema)
+            let movieData = NSKeyedArchiver.archivedDataWithRootObject(self.movies)
+            let cinemaData = NSKeyedArchiver.archivedDataWithRootObject(self.cinemas)
+            defaults.setObject( movieData, forKey: DefaultsKeys.movie)
+            defaults.setObject( cinemaData, forKey: DefaultsKeys.cinema)
             //-----------------------------------------------------------------------------
             
             //Tell NSUserDefaults to save to disk now.
-            defaults.synchronize()
-        }
+            // defaults.synchronize()
+        }*/
     }
 }
