@@ -20,7 +20,6 @@ class Movie:NSObject, NSCoding {
     var plot: String?
     var lang: String?
     var rating: Double?
-
     
     init(id: String, title: String, year: String, imageName: String, plot: String, lang: String, rating: Double) {
         self.id = id

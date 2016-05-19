@@ -20,6 +20,7 @@ private class LRUCacheNode<Key: Hashable, Value> {
 }
 
 class LRUCache<Key: Hashable, Value> {
+    
     private typealias Node = LRUCacheNode<Key, Value>
     
     private var capacity: Int
@@ -52,7 +53,7 @@ class LRUCache<Key: Hashable, Value> {
                     node.value = value
                     moveNodeToFront(node)
                 } else {
-                    var newNode = Node(key: key, value: value)
+                    let newNode = Node(key: key, value: value)
                     addNodeToFront(newNode)
                     
                     // Truncate from the tail
@@ -100,19 +101,21 @@ class LRUCache<Key: Hashable, Value> {
     }
     
     private func findNode(key: Key) -> Node? {
+        //print("findNode")
+        print("storage count \(count)")
         var node = head
         var found = false
-        
-        while node != nil {
-            if node?.key == key {
+        for node in storage {
+            //print("findNode while")
+            if node.0 == key {
+                print("Found node")
                 found = true
                 break
-            } else {
-                node = node?.next
             }
         }
         
         if !found {
+            print("cannot find")
             node = nil
         }
         
@@ -131,5 +134,9 @@ class LRUCache<Key: Hashable, Value> {
         if tail?.key == node.key {
             tail = previous
         }
+    }
+    
+    func getAll() -> Dictionary<Key, Value> {
+        return self.storage
     }
 }

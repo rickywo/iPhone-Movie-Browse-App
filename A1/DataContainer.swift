@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import CoreData
 
 
 /**
@@ -36,7 +37,8 @@ class DataContainerSingleton
 {
     
     static let sharedDataContainer = DataContainerSingleton()
-    
+    var data = DataController()
+    var managedObjectContext:NSManagedObjectContext?
     //------------------------------------------------------------
     //Add properties here that you want to share accross your app
     var movies = [Movie]()
@@ -56,11 +58,14 @@ class DataContainerSingleton
         }*/
         
         let moviesData = defaults.objectForKey(DefaultsKeys.movie) as? NSData
+        //ImageCache.saveImages()
+        ImageCache.fetchImage()
         
         if let moviesData = moviesData {
-            let movies = NSKeyedUnarchiver.unarchiveObjectWithData(moviesData) as? [Movie]
-            print("Load from NSUserDefault success")
+            movies = (NSKeyedUnarchiver.unarchiveObjectWithData(moviesData) as? [Movie])!
         }
+        managedObjectContext = data.managedObjectContext
+        
         
         // cinemas = (defaults.objectForKey(DefaultsKeys.cinema) as! [Cinema]?)!
         //-----------------------------------------------------------------------------
@@ -73,7 +78,8 @@ class DataContainerSingleton
             object: nil,
             queue: nil, usingBlock: {
             (notification: NSNotification!) in
-            print("程序进入到后台了")
+            print("Go background")
+                ImageCache.saveImages()
                 let defaults = NSUserDefaults.standardUserDefaults()
                 //-----------------------------------------------------------------------------
                 //This code saves the singleton's properties to NSUserDefaults.
@@ -86,21 +92,6 @@ class DataContainerSingleton
                 
                 //Tell NSUserDefaults to save to disk now.
                 defaults.synchronize()
-            }) /*
-        {
-            (note: NSNotification!) -> Void in
-            let defaults = NSUserDefaults.standardUserDefaults()
-            //-----------------------------------------------------------------------------
-            //This code saves the singleton's properties to NSUserDefaults.
-            //edit this code to save your custom properties
-            let movieData = NSKeyedArchiver.archivedDataWithRootObject(self.movies)
-            let cinemaData = NSKeyedArchiver.archivedDataWithRootObject(self.cinemas)
-            defaults.setObject( movieData, forKey: DefaultsKeys.movie)
-            defaults.setObject( cinemaData, forKey: DefaultsKeys.cinema)
-            //-----------------------------------------------------------------------------
-            
-            //Tell NSUserDefaults to save to disk now.
-            // defaults.synchronize()
-        }*/
+            }) 
     }
 }

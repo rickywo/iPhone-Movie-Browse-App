@@ -15,8 +15,6 @@ class SignUpViewController: LoadingViewController {
     @IBOutlet weak var passwordTextview: UITextField!
     @IBOutlet weak var comfirmPassTextview: UITextField!
     
-    let ref = Firebase(url: "https://glowing-heat-6163.firebaseio.com")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -96,6 +94,17 @@ class SignUpViewController: LoadingViewController {
                         self.displayAlertMessage("Create Account failed")
                         // Login failed
                     } else {
+                        
+                        //let dname = authData.providerData["displayName"] as! String
+                        let newUser = [
+                            "provider": authData.provider,
+                            "displayName": name
+                        ]
+                        // Create a child path with a key set to the uid underneath the "users" node
+                        // This creates a URL path like the following:
+                        
+                        FIREBASE_REF.childByAppendingPath("users")
+                            .childByAppendingPath(authData.uid).setValue(newUser)
                         NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                         print("User: \(authData.uid) is created");
                         self.navigationController?.popViewControllerAnimated(true)

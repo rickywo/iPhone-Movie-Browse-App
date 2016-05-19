@@ -27,8 +27,6 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
     
     @IBOutlet weak var userIcon: UIImageView!
     
-    let user = CURRENT_USER
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +48,7 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
     }
     
     func isLoggedIn() -> Bool {
-        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && user.authData != nil {
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil {
             // Logged in
             return true
         } else {
@@ -87,7 +85,7 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
     }
     
     @IBAction func logoutTapped(sender: AnyObject) {
-        user.unauth()
+        CURRENT_USER.unauth()
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
         showLoginView()
     }
@@ -110,7 +108,9 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
         FIREBASE_REF.authUser(name, password: pw, withCompletionBlock: {(error, authData) -> Void in
             if error == nil {
                 NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+
                 print("Login successfully")
+                print(authData.provider)
                 self.showDetailView()
                 self.stopActivityIndicator()
                 // Something went wrong. :(
@@ -151,7 +151,7 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
     }
     
     func showDetailView() {
-        print("LoadUserDetail")
+        
         loadUserDetail()
         
         loginView.hidden = true
@@ -174,7 +174,7 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
     {
         // Your action
         print("Picture tapped")
-        var imageFromSource = UIImagePickerController()
+        let imageFromSource = UIImagePickerController()
         imageFromSource.delegate = self
         imageFromSource.allowsEditing = false
         
@@ -192,14 +192,44 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        var temp: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        userIcon.image = temp
+        
+        let temp: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let ratio = CGFloat(117/temp.size.width)
+        let image = ImageCache.ResizeImage(temp, ratio: ratio)
+        userIcon.image = image
+        storeAvatarToFirebase(image)
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
+    func storeAvatarToFirebase(image: UIImage) {
+        
+        let base64String = ImageCache.convertImageToBase64(image)
+    
+        let avatar = ["avatar" : base64String]
+        
+        CURRENT_USER.updateChildValues(avatar, withCompletionBlock: {(error, firebase)-> Void in
+            self.showDetailView()
+            })
+    }
+    
     func loadUserDetail() {
-        print(user.authData.uid)
-        emailLabel.text = user.authData.uid
+        CURRENT_USER.observeEventType(.Value, withBlock: { snapshot in
+            let name = snapshot.value["displayName"] as! String
+            let base64String: String? = snapshot.value["avatar"] as? String
+            if let temp = base64String {
+                let image:UIImage? = ImageCache.convertBase64ToImage(temp)
+                if image != nil {
+                    self.userIcon.image = image
+                }
+            }
+            
+            
+            self.emailLabel.text = name
+            }, withCancelBlock: { error in
+                print(error.description)
+            })
+        //print(user.authData.uid)
+        
         
     }
 
@@ -217,6 +247,7 @@ class LoginViewController: LoadingViewController, UINavigationControllerDelegate
         usernameTextfield.text = ""
         passwordTextfield.text = ""
     }
+    
     /*
     // MARK: - Navigation
 
