@@ -14,6 +14,7 @@
 		FA0073891CEC089A0049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */; };
 		FA00738A1CEC089A0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073881CEC089A0049A465 /* Image.swift */; };
 		FA00738C1CEC125C0049A465 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738B1CEC125C0049A465 /* MainViewController.swift */; };
+		FA00738E1CEF20010049A465 /* CustomSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */; };
 		FA270C891CB627F0006BC5F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C881CB627F0006BC5F9 /* LoginViewController.swift */; };
 		FA270C8B1CB6595D006BC5F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */; };
 		FA270C8D1CB659DB006BC5F9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */; };
@@ -66,6 +67,7 @@
 		FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA0073881CEC089A0049A465 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA00738B1CEC125C0049A465 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchViewController.swift; sourceTree = "<group>"; };
 		FA270C881CB627F0006BC5F9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				FAA970431CE05B3000CD2AE9 /* LoadingViewController.swift */,
 				FA0073691CE2CD940049A465 /* DataController.swift */,
 				FA00738B1CEC125C0049A465 /* MainViewController.swift */,
+				FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				FAAFB4731CB28A0000AE63BD /* CinemaModel.swift in Sources */,
 				FAAFB4771CB3476D00AE63BD /* CinemaTableViewController.swift in Sources */,
 				FADAAABF1CB7EA1D00A9719E /* BookingViewController.swift in Sources */,
+				FA00738E1CEF20010049A465 /* CustomSearchViewController.swift in Sources */,
 				FAAFB4601CB10D7200AE63BD /* MovieTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

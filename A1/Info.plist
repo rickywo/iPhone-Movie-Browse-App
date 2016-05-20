@@ -43,18 +43,25 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>api.themoviedb.org</key>
-            <dict>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>www.omdbapi.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>api.themoviedb.org</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

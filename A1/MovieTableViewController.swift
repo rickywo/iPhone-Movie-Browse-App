@@ -21,11 +21,8 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.bringSubviewToFront(loadingView)
-        if(data.movies.count == 0 ) {
-            self.getNowPlaying()}
-        else {
-            tableView.reloadData()
-        }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("searchBarItemClicked"))
+        
         
         //fetchImage()
         
@@ -36,6 +33,40 @@ class MovieTableViewController: LoadingViewController, UITableViewDelegate, UITa
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        if(data.movies.count == 0 ) {
+            self.getNowPlaying()
+            print("getNowPlaying")
+        } else {
+            tableView.reloadData()
+            print("reload data")
+        }
+        
+        if isLoggedIn() {
+            // Logged in
+            self.navigationItem.rightBarButtonItem?.enabled = true
+            
+        } else {
+            self.navigationItem.rightBarButtonItem?.enabled = false
+        }
+    }
+    
+    func isLoggedIn() -> Bool {
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil {
+            // Logged in
+            return true
+        } else {
+            return false
+        }
+    }
+
+    
+    func searchBarItemClicked() {
+        performSegueWithIdentifier("CustomSearchSegue", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
