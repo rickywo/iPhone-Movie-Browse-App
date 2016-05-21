@@ -15,6 +15,29 @@
 		FA00738A1CEC089A0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073881CEC089A0049A465 /* Image.swift */; };
 		FA00738C1CEC125C0049A465 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738B1CEC125C0049A465 /* MainViewController.swift */; };
 		FA00738E1CEF20010049A465 /* CustomSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */; };
+		FA0073901CF05F740049A465 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736B1CE2D3550049A465 /* ImageCache.swift */; };
+		FA0073911CF05F900049A465 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736D1CE31DE30049A465 /* LRUCache.swift */; };
+		FA0073921CF05FA60049A465 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9703F1CE048D100CD2AE9 /* DataContainer.swift */; };
+		FA0073931CF05FA90049A465 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073691CE2CD940049A465 /* DataController.swift */; };
+		FA0073941CF05FBC0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073881CEC089A0049A465 /* Image.swift */; };
+		FA0073951CF05FC00049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */; };
+		FA0073961CF05FD40049A465 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB45F1CB10D7200AE63BD /* MovieTableViewController.swift */; };
+		FA0073971CF05FD80049A465 /* MovieUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB46E1CB2236400AE63BD /* MovieUIViewController.swift */; };
+		FA0073981CF05FDB0049A465 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAAABE1CB7EA1D00A9719E /* BookingViewController.swift */; };
+		FA0073991CF05FDE0049A465 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */; };
+		FA00739A1CF05FE10049A465 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */; };
+		FA00739B1CF05FE40049A465 /* CinemaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4761CB3476D00AE63BD /* CinemaTableViewController.swift */; };
+		FA00739C1CF05FE70049A465 /* MovieCinemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAAABA1CB7E1C700A9719E /* MovieCinemaViewController.swift */; };
+		FA00739D1CF05FEA0049A465 /* MovieCinemaSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAAABC1CB7E70100A9719E /* MovieCinemaSessionViewController.swift */; };
+		FA00739E1CF05FEC0049A465 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C881CB627F0006BC5F9 /* LoginViewController.swift */; };
+		FA00739F1CF05FF00049A465 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA970431CE05B3000CD2AE9 /* LoadingViewController.swift */; };
+		FA0073A01CF05FF50049A465 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738B1CEC125C0049A465 /* MainViewController.swift */; };
+		FA0073A11CF05FF80049A465 /* CustomSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */; };
+		FA0073A21CF05FFC0049A465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB43F1CB1015700AE63BD /* AppDelegate.swift */; };
+		FA0073A31CF05FFF0049A465 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4661CB1138400AE63BD /* Movie.swift */; };
+		FA0073A41CF060020049A465 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4701CB2759300AE63BD /* Cinema.swift */; };
+		FA0073A51CF060040049A465 /* CinemaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4721CB28A0000AE63BD /* CinemaModel.swift */; };
+		FA0073A61CF060090049A465 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AEDC91CE098B500D6E350 /* BaseService.swift */; };
 		FA270C891CB627F0006BC5F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C881CB627F0006BC5F9 /* LoginViewController.swift */; };
 		FA270C8B1CB6595D006BC5F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */; };
 		FA270C8D1CB659DB006BC5F9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */; };
@@ -26,7 +49,7 @@
 		FAAFB4451CB1015700AE63BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAFB4431CB1015700AE63BD /* Main.storyboard */; };
 		FAAFB4471CB1015700AE63BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAAFB4461CB1015700AE63BD /* Images.xcassets */; };
 		FAAFB44A1CB1015700AE63BD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAFB4481CB1015700AE63BD /* LaunchScreen.xib */; };
-		FAAFB4561CB1015700AE63BD /* A1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4551CB1015700AE63BD /* A1Tests.swift */; };
+		FAAFB4561CB1015700AE63BD /* CustomSearchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4551CB1015700AE63BD /* CustomSearchTest.swift */; };
 		FAAFB4601CB10D7200AE63BD /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB45F1CB10D7200AE63BD /* MovieTableViewController.swift */; };
 		FAAFB4671CB1138400AE63BD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4661CB1138400AE63BD /* Movie.swift */; };
 		FAAFB46F1CB2236400AE63BD /* MovieUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB46E1CB2236400AE63BD /* MovieUIViewController.swift */; };
@@ -85,7 +108,7 @@
 		FAAFB4491CB1015700AE63BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FAAFB44F1CB1015700AE63BD /* A1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = A1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAAFB4541CB1015700AE63BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAAFB4551CB1015700AE63BD /* A1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A1Tests.swift; sourceTree = "<group>"; };
+		FAAFB4551CB1015700AE63BD /* CustomSearchTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTest.swift; sourceTree = "<group>"; };
 		FAAFB45F1CB10D7200AE63BD /* MovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		FAAFB4661CB1138400AE63BD /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FAAFB46E1CB2236400AE63BD /* MovieUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieUIViewController.swift; path = ../MovieUIViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +245,7 @@
 		FAAFB4521CB1015700AE63BD /* A1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				FAAFB4551CB1015700AE63BD /* A1Tests.swift */,
+				FAAFB4551CB1015700AE63BD /* CustomSearchTest.swift */,
 				FAAFB4531CB1015700AE63BD /* Supporting Files */,
 			);
 			path = A1Tests;
@@ -474,7 +497,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAAFB4561CB1015700AE63BD /* A1Tests.swift in Sources */,
+				FA00739C1CF05FE70049A465 /* MovieCinemaViewController.swift in Sources */,
+				FA0073961CF05FD40049A465 /* MovieTableViewController.swift in Sources */,
+				FA00739F1CF05FF00049A465 /* LoadingViewController.swift in Sources */,
+				FA00739B1CF05FE40049A465 /* CinemaTableViewController.swift in Sources */,
+				FA0073991CF05FDE0049A465 /* SettingViewController.swift in Sources */,
+				FA0073931CF05FA90049A465 /* DataController.swift in Sources */,
+				FA0073941CF05FBC0049A465 /* Image.swift in Sources */,
+				FA00739D1CF05FEA0049A465 /* MovieCinemaSessionViewController.swift in Sources */,
+				FA0073A61CF060090049A465 /* BaseService.swift in Sources */,
+				FA0073A21CF05FFC0049A465 /* AppDelegate.swift in Sources */,
+				FA0073911CF05F900049A465 /* LRUCache.swift in Sources */,
+				FA0073901CF05F740049A465 /* ImageCache.swift in Sources */,
+				FA00739A1CF05FE10049A465 /* SignUpViewController.swift in Sources */,
+				FAAFB4561CB1015700AE63BD /* CustomSearchTest.swift in Sources */,
+				FA0073921CF05FA60049A465 /* DataContainer.swift in Sources */,
+				FA0073A31CF05FFF0049A465 /* Movie.swift in Sources */,
+				FA00739E1CF05FEC0049A465 /* LoginViewController.swift in Sources */,
+				FA0073A41CF060020049A465 /* Cinema.swift in Sources */,
+				FA0073A11CF05FF80049A465 /* CustomSearchViewController.swift in Sources */,
+				FA0073951CF05FC00049A465 /* Image+CoreDataProperties.swift in Sources */,
+				FA0073A01CF05FF50049A465 /* MainViewController.swift in Sources */,
+				FA0073981CF05FDB0049A465 /* BookingViewController.swift in Sources */,
+				FA0073A51CF060040049A465 /* CinemaModel.swift in Sources */,
+				FA0073971CF05FD80049A465 /* MovieUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

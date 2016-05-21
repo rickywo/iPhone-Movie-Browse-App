@@ -85,13 +85,14 @@ class ImageCache {
     }
     
     static func addNewImage( imageUrl: String, image: UIImage ) {
+        print(imageUrl)
         if !isCached( imageUrl ) {
             let key = imageUrl
             imageCache[key] = image
         }
     }
     
-    static private func isCached( imageUrl: String ) -> Bool {
+    static func isCached( imageUrl: String ) -> Bool {
         let key = imageUrl
         if imageCache[key] != nil {
             return true
@@ -99,9 +100,9 @@ class ImageCache {
         return false
     }
     
-    static private func stringToBase64( string: String ) -> String? {
-        let imageData = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        return imageData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+    static func stringToBase64( string: String ) -> String? {
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        return data?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
     }
     
     // convert images into base64 and keep them into string
@@ -221,8 +222,9 @@ class ImageCache {
         }
     }
     
-    static func seedImage ( key: String, image: UIImage ) {
+    static func seedImage ( key: String, image: UIImage ) -> Bool {
         
+        var result = true
        
         let data: DataContainerSingleton = DataContainerSingleton.sharedDataContainer
 
@@ -236,8 +238,11 @@ class ImageCache {
             try data.managedObjectContext!.save()
             print("Save image success")
         } catch {
+            result = false
             fatalError("Failure to save context")
         }
+        
+        return result
     }
 
 }
