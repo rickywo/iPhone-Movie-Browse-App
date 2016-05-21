@@ -11,16 +11,12 @@
 		FA00736A1CE2CD940049A465 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073691CE2CD940049A465 /* DataController.swift */; };
 		FA00736C1CE2D3550049A465 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736B1CE2D3550049A465 /* ImageCache.swift */; };
 		FA00736E1CE31DE30049A465 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736D1CE31DE30049A465 /* LRUCache.swift */; };
-		FA0073891CEC089A0049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */; };
-		FA00738A1CEC089A0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073881CEC089A0049A465 /* Image.swift */; };
 		FA00738C1CEC125C0049A465 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738B1CEC125C0049A465 /* MainViewController.swift */; };
 		FA00738E1CEF20010049A465 /* CustomSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */; };
 		FA0073901CF05F740049A465 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736B1CE2D3550049A465 /* ImageCache.swift */; };
 		FA0073911CF05F900049A465 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00736D1CE31DE30049A465 /* LRUCache.swift */; };
 		FA0073921CF05FA60049A465 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9703F1CE048D100CD2AE9 /* DataContainer.swift */; };
 		FA0073931CF05FA90049A465 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073691CE2CD940049A465 /* DataController.swift */; };
-		FA0073941CF05FBC0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073881CEC089A0049A465 /* Image.swift */; };
-		FA0073951CF05FC00049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */; };
 		FA0073961CF05FD40049A465 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB45F1CB10D7200AE63BD /* MovieTableViewController.swift */; };
 		FA0073971CF05FD80049A465 /* MovieUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB46E1CB2236400AE63BD /* MovieUIViewController.swift */; };
 		FA0073981CF05FDB0049A465 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADAAABE1CB7EA1D00A9719E /* BookingViewController.swift */; };
@@ -38,6 +34,10 @@
 		FA0073A41CF060020049A465 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4701CB2759300AE63BD /* Cinema.swift */; };
 		FA0073A51CF060040049A465 /* CinemaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFB4721CB28A0000AE63BD /* CinemaModel.swift */; };
 		FA0073A61CF060090049A465 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AEDC91CE098B500D6E350 /* BaseService.swift */; };
+		FA0073AD1CF073D40049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073AB1CF073D40049A465 /* Image+CoreDataProperties.swift */; };
+		FA0073AE1CF073D40049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073AC1CF073D40049A465 /* Image.swift */; };
+		FA0073AF1CF073FE0049A465 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073AC1CF073D40049A465 /* Image.swift */; };
+		FA0073B01CF074020049A465 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0073AB1CF073D40049A465 /* Image+CoreDataProperties.swift */; };
 		FA270C891CB627F0006BC5F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C881CB627F0006BC5F9 /* LoginViewController.swift */; };
 		FA270C8B1CB6595D006BC5F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */; };
 		FA270C8D1CB659DB006BC5F9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */; };
@@ -87,10 +87,10 @@
 		FA0073691CE2CD940049A465 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		FA00736B1CE2D3550049A465 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		FA00736D1CE31DE30049A465 /* LRUCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
-		FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FA0073881CEC089A0049A465 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA00738B1CEC125C0049A465 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA00738D1CEF20010049A465 /* CustomSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchViewController.swift; sourceTree = "<group>"; };
+		FA0073AB1CF073D40049A465 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA0073AC1CF073D40049A465 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA270C881CB627F0006BC5F9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA270C8A1CB6595D006BC5F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FA270C8C1CB659DB006BC5F9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -220,9 +220,9 @@
 		FAAFB43C1CB1015700AE63BD /* A1 */ = {
 			isa = PBXGroup;
 			children = (
+				FA0073AB1CF073D40049A465 /* Image+CoreDataProperties.swift */,
+				FA0073AC1CF073D40049A465 /* Image.swift */,
 				FAF3BC831CE03A8B002B2568 /* CoreDataModel.xcdatamodeld */,
-				FA0073871CEC089A0049A465 /* Image+CoreDataProperties.swift */,
-				FA0073881CEC089A0049A465 /* Image.swift */,
 				FA7D2C8B1CDDDE1A008A5EA4 /* Controllers */,
 				FAAFB43F1CB1015700AE63BD /* AppDelegate.swift */,
 				FAAFB4611CB10F8700AE63BD /* Models */,
@@ -467,16 +467,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA00736E1CE31DE30049A465 /* LRUCache.swift in Sources */,
+				FA0073AE1CF073D40049A465 /* Image.swift in Sources */,
 				FA00738C1CEC125C0049A465 /* MainViewController.swift in Sources */,
 				FA270C891CB627F0006BC5F9 /* LoginViewController.swift in Sources */,
 				FA270C8D1CB659DB006BC5F9 /* SettingViewController.swift in Sources */,
 				FADAAABB1CB7E1C700A9719E /* MovieCinemaViewController.swift in Sources */,
 				FAAFB4711CB2759300AE63BD /* Cinema.swift in Sources */,
 				FADAAABD1CB7E70100A9719E /* MovieCinemaSessionViewController.swift in Sources */,
-				FA0073891CEC089A0049A465 /* Image+CoreDataProperties.swift in Sources */,
 				FA00736A1CE2CD940049A465 /* DataController.swift in Sources */,
 				FAF3BC851CE03A8B002B2568 /* CoreDataModel.xcdatamodeld in Sources */,
-				FA00738A1CEC089A0049A465 /* Image.swift in Sources */,
+				FA0073AD1CF073D40049A465 /* Image+CoreDataProperties.swift in Sources */,
 				FAAFB46F1CB2236400AE63BD /* MovieUIViewController.swift in Sources */,
 				FAA970401CE048D100CD2AE9 /* DataContainer.swift in Sources */,
 				FA270C8B1CB6595D006BC5F9 /* SignUpViewController.swift in Sources */,
@@ -499,11 +499,11 @@
 			files = (
 				FA00739C1CF05FE70049A465 /* MovieCinemaViewController.swift in Sources */,
 				FA0073961CF05FD40049A465 /* MovieTableViewController.swift in Sources */,
+				FA0073AF1CF073FE0049A465 /* Image.swift in Sources */,
 				FA00739F1CF05FF00049A465 /* LoadingViewController.swift in Sources */,
 				FA00739B1CF05FE40049A465 /* CinemaTableViewController.swift in Sources */,
 				FA0073991CF05FDE0049A465 /* SettingViewController.swift in Sources */,
 				FA0073931CF05FA90049A465 /* DataController.swift in Sources */,
-				FA0073941CF05FBC0049A465 /* Image.swift in Sources */,
 				FA00739D1CF05FEA0049A465 /* MovieCinemaSessionViewController.swift in Sources */,
 				FA0073A61CF060090049A465 /* BaseService.swift in Sources */,
 				FA0073A21CF05FFC0049A465 /* AppDelegate.swift in Sources */,
@@ -512,11 +512,11 @@
 				FA00739A1CF05FE10049A465 /* SignUpViewController.swift in Sources */,
 				FAAFB4561CB1015700AE63BD /* CustomSearchTest.swift in Sources */,
 				FA0073921CF05FA60049A465 /* DataContainer.swift in Sources */,
+				FA0073B01CF074020049A465 /* Image+CoreDataProperties.swift in Sources */,
 				FA0073A31CF05FFF0049A465 /* Movie.swift in Sources */,
 				FA00739E1CF05FEC0049A465 /* LoginViewController.swift in Sources */,
 				FA0073A41CF060020049A465 /* Cinema.swift in Sources */,
 				FA0073A11CF05FF80049A465 /* CustomSearchViewController.swift in Sources */,
-				FA0073951CF05FC00049A465 /* Image+CoreDataProperties.swift in Sources */,
 				FA0073A01CF05FF50049A465 /* MainViewController.swift in Sources */,
 				FA0073981CF05FDB0049A465 /* BookingViewController.swift in Sources */,
 				FA0073A51CF060040049A465 /* CinemaModel.swift in Sources */,

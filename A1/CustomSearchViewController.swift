@@ -17,7 +17,7 @@ struct movie_t {
     
 }
 
-class CustomSearchViewController: UIViewController {
+class CustomSearchViewController: UIViewController, UITextFieldDelegate{
     
     var movieArray = [movie_t]()
     var requests:Int = 0
@@ -29,6 +29,8 @@ class CustomSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.titleTextfield.delegate = self;
+        self.yearTextfield.delegate = self;
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +38,10 @@ class CustomSearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func searchButtonClicked(sender: AnyObject) {
         let keyword = titleTextfield.text

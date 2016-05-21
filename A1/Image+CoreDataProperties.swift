@@ -2,7 +2,7 @@
 //  Image+CoreDataProperties.swift
 //  
 //
-//  Created by Lee Shih ping on 2016/5/18.
+//  Created by Lee Shih ping on 2016/5/21.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
